@@ -3,7 +3,7 @@ import logo from '../assets/logo.svg'
 
 const Footer = () => {
     return (
-        <footer className="bg-purple-100 py-10">
+        <footer className="bg-[#f5edfe] py-10">
         <div className="container mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Left Section - Logo and Socials */}
