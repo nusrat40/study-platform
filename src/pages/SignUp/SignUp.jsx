@@ -94,7 +94,7 @@ const SignUp = () => {
             <title>iLearning | SignUp</title>
           </Helmet>
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="w-[600px]">
+          <div className="w-[400px] lg:w-[600px]">
             <Lottie animationData={registerAnimation}></Lottie>
           </div>
   
@@ -165,9 +165,9 @@ const SignUp = () => {
                 className="select select-ghost w-full h-[45px] rounded-lg input-bordered bg-white"
               >
                 <option disabled>Pick a Tole</option>
-                <option>Student</option>
-                <option>Tutor</option>
-                <option>Admin</option>
+                <option>student</option>
+                <option>tutor</option>
+                <option>admin</option>
               </select>
             </div>
 

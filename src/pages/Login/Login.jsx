@@ -10,6 +10,9 @@ const Login = () => {
 
   const {signIn}=useContext(AuthContext);
   const navigate = useNavigate();
+  const location =useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
 
   const handleLogin = event => {
@@ -21,7 +24,7 @@ const Login = () => {
     signIn(email, password)
         .then(result => {
             const user = result.user;
-            console.log(user);
+            // console.log(user);
             Swal.fire({
                 title: 'User Login Successful.',
                 showClass: {
@@ -46,7 +49,7 @@ const Login = () => {
         </Helmet>
         <div className="hero mb-10">
         <div className="hero-content flex-col gap-10 lg:flex-row-reverse">
-          <div className="w-[600px]">
+          <div className="w-[400px] lg:w-[600px]">
             <Lottie animationData={loginAnimation}></Lottie>
           </div>
   

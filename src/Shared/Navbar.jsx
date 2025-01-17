@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
+import logo1 from '../assets/scroll-logo.svg';
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const [isScrolled,setIsScrolled]=useState(false);
+
+  useEffect(()=>{
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  },[])
+
   return (
-    <div className="navbar bg-base-100 mb-5 py-3 container mx-auto px-12">
+    <div className={`navbar ${
+      isScrolled ? "bg-[#3b3563] text-white fixed top-0 left-0 w-full" : "bg-[#f5edfe]"
+    } transition-all duration-300 py-3 container mx-auto px-12 z-50`}>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -27,20 +46,59 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <button className="btn">login</button>
+
+            {user && user?.email ? (
+          <div className="flex flex-col gap-2">
+
+            <div className="">
+              <img className="w-14 h-14 rounded-full" src={user?.photoURL} alt="User Avatar" />
+            </div>
+            <button className="btn bg-[#ad6cf5] text-white font-bold" onClick={logOut}>Logout</button>
+            <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button>
+
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3">
+            <button className="btn bg-[#ad6cf5] text-white font-bold">
+              <Link to="/login">Log in</Link>
+            </button>
+            <button className="btn bg-[#ad6cf5] text-white font-bold">
+              <Link to="/signup">Sign Up</Link>
+            </button>
+          </div>
+        )}
+
           </ul>
         </div>
 
-        <img src={logo} alt="" />
-      
+        <img src={isScrolled ? logo1 : logo} alt="" />
       </div>
 
       {/* <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div> */}
 
-      <div className="navbar-end gap-4">
-        <button className="btn">login</button>
+      <div className="navbar-end gap-4 hidden lg:flex">
+        {user && user?.email ? (
+          <div className="flex items-center justify-center gap-2">
+
+            <div className="">
+              <img className="w-14 h-14 rounded-full" src={user?.photoURL} alt="User Avatar" />
+            </div>
+            <button className="btn bg-[#ad6cf5] text-white font-bold" onClick={logOut}>Logout</button>
+            <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button>
+
+          </div>
+        ) : (
+          <div className="space-x-4">
+            <button className="btn bg-[#ad6cf5] text-white font-bold">
+              <Link to="/login">Log in</Link>
+            </button>
+            <button className="btn bg-[#ad6cf5] text-white font-bold">
+              <Link to="/signup">Sign Up</Link>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
