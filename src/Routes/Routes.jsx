@@ -17,6 +17,9 @@ import StudyMaterials from "../pages/Dashboard/Student/StudyMaterials";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers";
 import AllStudySession from "../pages/Dashboard/Admin/AllStudySession";
 import AllMaterials from "../pages/Dashboard/Admin/AllMaterials";
+import AdminRoute from "./AdminRoute";
+import StudentRoute from "./StudentRoute";
+import TutorRoute from "./TutorRoute";
 
 
 export const router = createBrowserRouter([
@@ -50,51 +53,51 @@ export const router = createBrowserRouter([
       //tutor routes
       {
          path:'addStudySession',
-         element:<AddStudySession></AddStudySession>
+         element:<TutorRoute><AddStudySession></AddStudySession></TutorRoute>
       },
       {
         path:'viewStudySessions',
-        element:<ViewStudySession></ViewStudySession>
+        element:<TutorRoute><ViewStudySession></ViewStudySession></TutorRoute>
       },
       {
         path:'uploadMaterials',
-        element:<UploadMaterials></UploadMaterials>
+        element:<TutorRoute><UploadMaterials></UploadMaterials></TutorRoute>
       },
       {
          path:'viewMaterials',
-         element:<ViewAllMaterials></ViewAllMaterials>
+         element:<TutorRoute><ViewAllMaterials></ViewAllMaterials></TutorRoute>
       },
 
       //student routes
       {
         path:'viewBookedSessions',
-        element:<BookedSession></BookedSession>
+        element:<StudentRoute><BookedSession></BookedSession></StudentRoute>
       },
       {
         path:'createNote',
-        element:<CreateNote></CreateNote>
+        element:<StudentRoute><CreateNote></CreateNote></StudentRoute>
       },
       {
         path:'manageNotes',
-        element:<ManageNotes></ManageNotes>
+        element:<StudentRoute><ManageNotes></ManageNotes></StudentRoute>
       },
       {
         path:'viewStudyMaterials',
-        element:<StudyMaterials></StudyMaterials>
+        element:<StudentRoute><StudyMaterials></StudyMaterials></StudentRoute>
       },
 
       //admin routes
       {
         path:'allUsers',
-        element:<AllUsers></AllUsers>
+        element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
       {
         path:'allStudySession',
-        element:<AllStudySession></AllStudySession>
+        element:<AdminRoute><AllStudySession></AllStudySession></AdminRoute>
       },
       {
         path:'allMaterials',
-        element:<AllMaterials></AllMaterials>
+        element:<AdminRoute><AllMaterials></AllMaterials></AdminRoute>
       }
     ]
   }
