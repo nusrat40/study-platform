@@ -3,10 +3,17 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import logo1 from '../assets/scroll-logo.svg';
 import { AuthContext } from "../provider/AuthProvider";
+import useTutor from "../hooks/useTutor";
+import useStudent from "../hooks/useStudent";
+import useAdmin from "../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isScrolled,setIsScrolled]=useState(false);
+
+  const [isTutor]=useTutor();
+  const [isStudent]=useStudent();
+  const [isAdmin]=useAdmin();
 
   useEffect(()=>{
     const handleScroll = () => {
@@ -74,9 +81,6 @@ const Navbar = () => {
         <img src={isScrolled ? logo1 : logo} alt="" />
       </div>
 
-      {/* <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
-      </div> */}
 
       <div className="navbar-end gap-4 hidden lg:flex">
         {user && user?.email ? (
@@ -86,7 +90,16 @@ const Navbar = () => {
               <img className="w-14 h-14 rounded-full" src={user?.photoURL} alt="User Avatar" />
             </div>
             <button className="btn bg-[#ad6cf5] text-white font-bold" onClick={logOut}>Logout</button>
-            <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button>
+            {
+              user && isTutor && <Link to="/dashboard/addStudySession"> <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button></Link>
+            }
+            {
+              user && isStudent && <Link to="/dashboard/viewBookedSessions"> <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button></Link>
+            }
+            {
+              user && isAdmin && <Link to="/dashboard/allUsers"> <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button></Link>
+            }
+            
 
           </div>
         ) : (
