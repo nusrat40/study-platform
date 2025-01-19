@@ -61,7 +61,15 @@ const Navbar = () => {
               <img className="w-14 h-14 rounded-full" src={user?.photoURL} alt="User Avatar" />
             </div>
             <button className="btn bg-[#ad6cf5] text-white font-bold" onClick={logOut}>Logout</button>
-            <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button>
+            {
+              user && isTutor && <Link to="/dashboard/addStudySession"> <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button></Link>
+            }
+            {
+              user && isStudent && <Link to="/dashboard/viewBookedSessions"> <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button></Link>
+            }
+            {
+              user && isAdmin && <Link to="/dashboard/allUsers"> <button className="btn bg-[#ad6cf5] text-white font-bold">Dashboard</button></Link>
+            }
 
           </div>
         ) : (

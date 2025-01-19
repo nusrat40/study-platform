@@ -4,7 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
+
 
 const AddStudySession = () => {
 
@@ -42,7 +42,7 @@ const AddStudySession = () => {
       <Helmet>
         <title>iLearning | Create Session</title>
       </Helmet>
-      <h2 className="text-3xl font-bold mb-4">Create Study Session</h2>
+      <h1 className="text-3xl font-bold mb-4">Create Study Session</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <label className="label font-medium">Session Title</label>
