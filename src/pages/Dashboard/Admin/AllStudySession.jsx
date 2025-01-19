@@ -39,7 +39,7 @@ const AllStudySession = () => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           const { isFree, registrationFee } = result.value;
-          await axiosSecure.patch(`/admin/sessions/approve/${id}`, { isFree, registrationFee });
+          await axiosSecure.patch(`/sessions/approve/${id}`, { isFree, registrationFee });
           Swal.fire("Success", "Session approved successfully!", "success");
           refetch();
         }
@@ -48,6 +48,26 @@ const AllStudySession = () => {
   };
 
   const handleReject = async(id)=>{
+    Swal.fire({
+        title: "Reject Study Session",
+        text: "Are you sure you want to reject this session?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Reject",
+        cancelButtonText: "Cancel",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            await axiosSecure.patch(`/sessions/reject/${id}`);
+            Swal.fire("Rejected!", "The session has been rejected.", "success");
+            refetch(); // Refetch data to update the UI
+          } catch (error) {
+            console.log(error);
+            
+            Swal.fire("Error", "Failed to reject the session. Please try again.", "error");
+          }
+        }
+      });
 
   };
 
@@ -99,7 +119,7 @@ const AllStudySession = () => {
                     <td>{item.registrationFee}</td>
                     <td>{item.status}</td>
                     <td>
-                  {item.status === "pending" ? (
+                  {item.status === "pending"|| item.status === "rejected" ? (
                     <>
                       <button
                         onClick={() => handleApprove(item._id)}
@@ -114,7 +134,7 @@ const AllStudySession = () => {
                         <FaTimes />
                       </button>
                     </>
-                  ) : (
+                  ) : item.status === "approved" ? (
                     <>
                       <button
                         onClick={() => handleUpdate(item._id)}
@@ -124,12 +144,12 @@ const AllStudySession = () => {
                       </button>
                       <button
                         onClick={() => handleDelete(item._id)}
-                        className="btn btn-ghost btn-sm bg-red-500 text-white"
+                        className="btn btn-ghost btn-sm bg-red-500 text-white ml-3"
                       >
                         <FaTrashAlt />
                       </button>
                     </>
-                  )}
+                  ) : null}
                 </td>
                   </tr>
                 ))}
