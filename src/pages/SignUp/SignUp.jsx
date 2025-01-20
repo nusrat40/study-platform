@@ -166,7 +166,7 @@ const SignUp = () => {
                 name="role"
                 className="select select-ghost w-full h-[45px] rounded-lg input-bordered bg-white"
               >
-                <option disabled>Pick a Tole</option>
+                <option value="pick a role">Pick a Tole</option>
                 <option>student</option>
                 <option>tutor</option>
                 <option>admin</option>

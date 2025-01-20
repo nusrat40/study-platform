@@ -19,7 +19,6 @@ const AddStudySession = () => {
         data.status= "pending";
 
         const allSession = await axiosSecure.post('/sessions', data);
-        console.log(allSession.data);
         if(allSession.data.insertedId){
             reset();
             Swal.fire({

@@ -5,10 +5,10 @@ import noPost from "../../../assets/noPost.json";
 import Lottie from "lottie-react";
 
 const ViewStudySession = () => {
-  const [session, refetch, loading] = useStudySession();
+  const [session,loading, refetch,] = useStudySession();
 
   return (
-    <div>
+    <div >
       <Helmet>
         <title>iLearning | Study Sessions</title>
       </Helmet>
