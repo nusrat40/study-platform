@@ -5,10 +5,40 @@ import Lottie from 'lottie-react';
 import noPost from '../../../assets/noPost.json'
 import { Link } from 'react-router-dom';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const ViewAllMaterials = () => {
 
     const  [materials, loading, refetch] =useMaterials();
+    const axiosSecure = useAxiosSecure();
+
+    const handleDelete = (id) => {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            const res = await axiosSecure.delete(`/materials/${id}`);
+        
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: 'Material has been deleted',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          }
+        });
+      };
 
 
     return (
@@ -54,7 +84,7 @@ const ViewAllMaterials = () => {
                     <td><a href={item.link}>{item.link}</a></td>
                     <td>
                         <div className='flex flex-col lg:flex-row gap-2'>
-                        <Link to={`/dashboard/updateItem/${item._id}`}>
+                        <Link to={`/dashboard/updateMaterial/${item._id}`}>
                           <button
                             className="btn btn-ghost btn-sm bg-blue-500 text-white"
                           >

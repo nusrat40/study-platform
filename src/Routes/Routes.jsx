@@ -21,6 +21,7 @@ import AdminRoute from "./AdminRoute";
 import StudentRoute from "./StudentRoute";
 import TutorRoute from "./TutorRoute";
 import UpdateStudySession from "../pages/Dashboard/Admin/UpdateStudySession";
+import UpdateMaterial from "../pages/Dashboard/Tutor/UpdateMaterial";
 
 
 export const router = createBrowserRouter([
@@ -67,6 +68,12 @@ export const router = createBrowserRouter([
       {
          path:'viewMaterials',
          element:<TutorRoute><ViewAllMaterials></ViewAllMaterials></TutorRoute>
+      },
+      {
+        path:'updateMaterial/:id',
+        element:<TutorRoute><UpdateMaterial></UpdateMaterial></TutorRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/materials/${params.id}`)
+        
       },
 
       //student routes

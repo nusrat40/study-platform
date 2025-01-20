@@ -4,6 +4,9 @@ import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import useAuth from '../../../hooks/useAuth';
+import Lottie from 'lottie-react';
+import noPost from '../../../assets/noPost.json';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -15,14 +18,15 @@ const UploadMaterials = () => {
     const axiosSecure=useAxiosSecure();
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset } = useForm();
+    const{user}=useAuth();
 
     useEffect(() => {
         const fetchSessions = async () => {
-            const res = await axiosSecure.get('/sessions/approved'); 
+            const res = await axiosSecure.get(`/sessions/approved?email=${user.email}`); 
             setApprovedSessions(res.data);
         };
         fetchSessions();
-    }, [axiosSecure]);
+    }, [axiosSecure,user.email]);
 
 
     const onSubmit =async (data) =>{
@@ -50,7 +54,7 @@ const UploadMaterials = () => {
             if(materialRes.data.insertedId){
                 reset();
                 Swal.fire({
-                    position: "top-end",
+                    position: "center",
                     icon: "success",
                     title: 'Material is added',
                     showConfirmButton: false,
@@ -73,7 +77,32 @@ const UploadMaterials = () => {
         {/* Approved Sessions List */}
         <div>
             <h2 className="text-2xl font-semibold mb-2">Approved Sessions</h2>
-            {approvedSessions.map((session) => (
+            {/* {approvedSessions.map((session) => (
+                <div key={session._id} className="border rounded-lg p-4 mb-2 space-y-2">
+                    <p><strong>Title:</strong> {session.title}</p>
+                    <p><strong>Tutor:</strong> {session.tutorName}</p>
+                    <button
+                        className="btn bg-[#a054f4] text-white font-bold"
+                        onClick={() => setSelectedSession(session)}
+                    >
+                        Upload Materials
+                    </button>
+                </div>
+            ))} */}
+
+            {
+                approvedSessions.length === 0 ? (
+                    <div className="">
+                    <h2 className="text-3xl text-center font-bold">
+                      No Post Available At This Moment
+                    </h2>
+                    <div className="w-[400px] lg:w-[600px] mx-auto">
+                      <Lottie animationData={noPost}></Lottie>
+                    </div>
+                  </div>
+                ) : (
+                    <div>
+                        {approvedSessions.map((session) => (
                 <div key={session._id} className="border rounded-lg p-4 mb-2 space-y-2">
                     <p><strong>Title:</strong> {session.title}</p>
                     <p><strong>Tutor:</strong> {session.tutorName}</p>
@@ -85,6 +114,12 @@ const UploadMaterials = () => {
                     </button>
                 </div>
             ))}
+
+                    </div>
+                )
+            }
+
+
         </div>
 
         {/* Upload Materials Form */}
