@@ -77,18 +77,7 @@ const UploadMaterials = () => {
         {/* Approved Sessions List */}
         <div>
             <h2 className="text-2xl font-semibold mb-2">Approved Sessions</h2>
-            {/* {approvedSessions.map((session) => (
-                <div key={session._id} className="border rounded-lg p-4 mb-2 space-y-2">
-                    <p><strong>Title:</strong> {session.title}</p>
-                    <p><strong>Tutor:</strong> {session.tutorName}</p>
-                    <button
-                        className="btn bg-[#a054f4] text-white font-bold"
-                        onClick={() => setSelectedSession(session)}
-                    >
-                        Upload Materials
-                    </button>
-                </div>
-            ))} */}
+
 
             {
                 approvedSessions.length === 0 ? (
