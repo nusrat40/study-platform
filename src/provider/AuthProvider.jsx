@@ -50,35 +50,63 @@ const AuthProvider = ({children}) => {
 
 
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
-            // console.log('current user',currentUser);
+    // useEffect(() => {
+    //     const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    //         setUser(currentUser);
+    //         // console.log('current user',currentUser);
             
-            if(currentUser){
-                //get token and store client
-                const userInfo ={email: currentUser.email};
-                axiosPublic.post('/jwt',userInfo)
-                .then(res =>{
-                    if (res.data.token) {
-                        localStorage.setItem('access-token', res.data.token);
-                        setLoading(false);
-                    }
-                })
-
-            }
-            else{
+    //         if(currentUser){
                 
-                 localStorage.removeItem('access-token');
-                 setLoading(false);
+    //             const userInfo ={email: currentUser.email};
+    //             axiosPublic.post('/jwt',userInfo)
+    //             .then(res =>{
+    //                 if (res.data.token) {
+    //                     localStorage.setItem('access-token', res.data.token);
+    //                     setLoading(false);
+    //                 }
+    //             })
 
-            }
+    //         }
+    //         else{
+                
+    //              localStorage.removeItem('access-token');
+    //              setLoading(false);
+
+    //         }
            
+    //     });
+    //     return () => {
+    //         return unsubscribe();
+    //     }
+    // }, [axiosPublic])
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+            if (currentUser) {
+                setLoading(true);
+                const userInfo = { email: currentUser.email };
+                const { data } = await axiosPublic.post('/jwt', userInfo);
+                localStorage.setItem('access-token', data.token);
+    
+                // Fetch user role
+                const roleResponse = await axiosPublic.get(`/users/role/${currentUser.email}`, {
+                    headers: { Authorization: `Bearer ${data.token}` },
+                });
+                const userRole = roleResponse.data.role;
+    
+                setUser({ ...currentUser, role: userRole });
+            } else {
+                localStorage.removeItem('access-token');
+                setUser(null);
+            }
+            setLoading(false);
         });
-        return () => {
-            return unsubscribe();
-        }
-    }, [axiosPublic])
+    
+        return () => unsubscribe();
+    }, [axiosPublic]);
+    
+
+
 
     const authInfo={
         user,

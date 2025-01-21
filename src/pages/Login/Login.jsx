@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../components/SocialLogin';
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
@@ -36,6 +37,9 @@ const Login = () => {
                 }
             });
             navigate(from, { replace: true });
+        })
+        .catch(error=>{
+          toast.error(error.message)
         })
 }
 

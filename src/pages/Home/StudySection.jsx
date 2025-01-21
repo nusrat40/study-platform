@@ -1,10 +1,12 @@
 import React from 'react';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 const StudySection = () => {
 
     const axiosPublic = useAxiosPublic();
+    const navigate=useNavigate();
 
   const { data: allSessions = [], refetch } = useQuery({
     queryKey: ["allSessions"],
@@ -38,7 +40,9 @@ const StudySection = () => {
             <p className='text-gray-500'>{session.description}</p>
             <div className='flex gap-6'>
                 <button className='btn bg-[#a054f4] text-white font-bold'>{isOngoing ? "Ongoing" : "Closed"}</button>
-                <button className='btn bg-[#a054f4] text-white font-bold'>Read More</button>
+                <button
+                onClick={()=>navigate(`/sessionDetails/${session._id}`)}
+                 className='btn bg-[#a054f4] text-white font-bold'>Read More</button>
 
             </div>
             </div>
