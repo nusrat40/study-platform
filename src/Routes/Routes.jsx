@@ -24,6 +24,7 @@ import UpdateStudySession from "../pages/Dashboard/Admin/UpdateStudySession";
 import UpdateMaterial from "../pages/Dashboard/Tutor/UpdateMaterial";
 import UpdateNote from "../pages/Dashboard/Student/UpdateNote";
 import SessionDetails from "../pages/Home/SessionDetails";
+import Payment from "../pages/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
           path:'sessionDetails/:id',
           element:<PrivateRoute><SessionDetails></SessionDetails></PrivateRoute>,
           loader:({params})=> fetch(`http://localhost:5000/sessions/${params.id}`)
+        },
+        {
+          path:'payment',
+          element:<Payment></Payment>
         }
     ]
   },

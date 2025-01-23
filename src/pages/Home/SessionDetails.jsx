@@ -1,11 +1,13 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const SessionDetails = () => {
   const sessionData = useLoaderData();
   const {user}=useAuth();
+  const navigate=useNavigate();
 
   const {
     _id,
@@ -17,6 +19,7 @@ const SessionDetails = () => {
     classEndDate,
     duration,
     tutorName,
+    tutorEmail,
     registrationFee,
   } = sessionData;
 
@@ -25,6 +28,49 @@ const SessionDetails = () => {
              new Date() <= new Date(registrationEndDate);
 
     const isAdminOrTutor = user?.role === "admin" || user?.role === "tutor";
+
+
+    const handleBooking = async () => {
+
+      if (registrationFee === 0) {
+          // Free session, book directly
+          const response = await fetch('http://localhost:5000/bookedSession', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${user.token}`,
+              },
+              body: JSON.stringify({ sessionId: _id, studentEmail: user.email }),
+          });
+          const data = await response.json();
+          if (data.insertedId) {
+              toast.success("Session booked successfully!");
+          } else {
+              toast.error( "Failed to book session.");
+          }
+      } else {
+          // Redirect to payment page
+          navigate('/payment', { 
+            state: { 
+              price: registrationFee, 
+              sessionId: _id, 
+              sessionDetails:{
+                title,
+              description,
+              registrationStartDate,
+              registrationEndDate,
+              classStartDate,
+              classEndDate,
+              duration,
+              tutorName,
+              tutorEmail,
+              registrationFee 
+              }
+            } 
+           });
+      }
+  };
+  
     
     
   
@@ -69,9 +115,12 @@ const SessionDetails = () => {
             {
               isOngoing ? (
 
-                <button disabled={isAdminOrTutor} className='btn bg-[#a054f4] text-white font-bold'>
+                <button
+                onClick={handleBooking}
+                 disabled={isAdminOrTutor} className='btn bg-[#a054f4] text-white font-bold'>
                     Book Now
                 </button>
+                
 
               ) : (
                <button disabled className='btn bg-[#a054f4] text-white font-bold'>Registration Closed</button>
