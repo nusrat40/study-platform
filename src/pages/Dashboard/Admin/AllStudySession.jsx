@@ -56,15 +56,35 @@ const AllStudySession = () => {
   const handleReject = async (id) => {
     Swal.fire({
       title: "Reject Study Session",
-      text: "Are you sure you want to reject this session?",
-      icon: "warning",
+      html: `
+      <form id="rejectForm">
+        <div>
+          <label for="rejectionReason">Reason for Rejection:</label>
+          <input type="text" id="rejectionReason" placeholder="Enter reason" class="swal2-input" required />
+        </div>
+        <div>
+          <label for="feedback">Feedback:</label>
+          <textarea id="feedback" placeholder="Provide feedback" class="swal2-textarea" required></textarea>
+        </div>
+      </form>
+    `,
       showCancelButton: true,
       confirmButtonText: "Yes, Reject",
+      preConfirm: () => {
+        const rejectionReason = document.getElementById("rejectionReason").value;
+        const feedback = document.getElementById("feedback").value;
+        if (!rejectionReason || !feedback) {
+          Swal.showValidationMessage("Both fields are required");
+        }
+        return { rejectionReason, feedback };
+      },
       cancelButtonText: "Cancel",
     }).then(async (result) => {
       if (result.isConfirmed) {
+        const { rejectionReason, feedback } = result.value;
         try {
           await axiosSecure.patch(`/sessions/reject/${id}`);
+          await axiosSecure.post(`/rejections`, { sessionId: id, rejectionReason, feedback });
           Swal.fire("Rejected!", "The session has been rejected.", "success");
           refetch(); // Refetch data to update the UI
         } catch (error) {

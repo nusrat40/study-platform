@@ -45,13 +45,22 @@ const BookedSession = () => {
                     <td>{item.title}</td>
                     <td>{item.tutorName}</td>
                     <td>
-                    <Link to={`/dashboard/bookedSessionDetail/${item._id}`}>
+                   <div className='flex flex-col lg:flex-row gap-2'>
+                   <Link to={`/dashboard/bookedSessionDetail/${item._id}`}>
                           <button
                             className="btn bg-[#a054f4] text-white font-bold"
                           >
                             Details
                           </button>
                           </Link>
+                    <Link to={`/dashboard/viewStudyMaterials/${item.sessionId}`}>
+                          <button
+                            className="btn bg-[#a054f4] text-white font-bold"
+                          >
+                            Materials
+                          </button>
+                          </Link>
+                   </div>
                     </td>  
                   </tr>
                 ))}

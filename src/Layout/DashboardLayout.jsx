@@ -94,12 +94,12 @@ const DashboardLayout = () => {
                   Manage Personal Notes
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to="/dashboard/viewStudyMaterials">
                   <FaFileAlt />
                   View Study Materials
                 </NavLink>
-              </li>
+              </li> */}
             </>
           )}
 

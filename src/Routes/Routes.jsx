@@ -108,8 +108,9 @@ export const router = createBrowserRouter([
         element:<StudentRoute><ManageNotes></ManageNotes></StudentRoute>
       },
       {
-        path:'viewStudyMaterials',
-        element:<StudentRoute><StudyMaterials></StudyMaterials></StudentRoute>
+        path:'viewStudyMaterials/:id',
+        element:<StudentRoute><StudyMaterials></StudyMaterials></StudentRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/materials/session/${params.id}`)
       },
       {
         path:'updateNote/:id',
