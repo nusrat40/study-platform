@@ -1,8 +1,34 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# iLearning
 
-Currently, two official plugins are available:
+Welcome to **iLearning**, an innovative platform designed for tutors and learners to enhance their education journey. The platform offers seamless study session management, interactive learning, and a feature-rich dashboard for tutors and students.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Admin Credentials
+- **Username**: johndoe@gmail.com  
+- **Password**: John12345@  
+
+
+## Live Demo
+Check out the live website here: [Live Demo]()
+
+
+
+## Key Features in this project
+
+- Secure Private Routes
+- Secure Authentication
+- Interactive Alerts
+- Search Functionality
+- Efficient State Management
+- Custom Hooks for API Calls
+- Helmet Integration
+- Mobile-Responsive Design
+- Interactive Student Portal
+- Developer-Friendly Codebase
+
+
+
+
+
+
+

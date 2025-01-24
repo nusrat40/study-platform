@@ -25,7 +25,7 @@ const StudyMaterials = () => {
               />
               <div className="mt-4">
                 <p className="font-bold">{material.title}</p>
-                <div className="mt-4 flex justify-between items-center">
+                <div className="mt-4 flex flex-col lg:flex-row gap-2 items-center">
                   <a
                     href={material.link}
                     target="_blank"

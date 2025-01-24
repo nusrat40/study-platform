@@ -57,7 +57,7 @@ const axiosSecure =useAxiosSecure();
     <h1 className="text-5xl font-bold text-center">
       Here is the Session Details
     </h1>
-    <div className="card bg-[#f7f5fa] shadow-xl m-10 p-8">
+    <div className="card bg-[#f7f5fa] shadow-xl m-2 lg:m-10 p-8">
       <div className="space-y-2">
         <h2 className="text-3xl font-bold">{title}</h2>
         <p className="text-gray-500">{description}</p>
