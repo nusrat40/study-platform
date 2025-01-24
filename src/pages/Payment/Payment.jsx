@@ -21,7 +21,7 @@ const Payment = () => {
   
 
   const handlePaymentSuccess = async (paymentIntentId) => {
-    const response = await fetch('http://localhost:5000/bookedSession', {
+    const response = await fetch('https://study-platform-server-gold.vercel.app/bookedSession', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

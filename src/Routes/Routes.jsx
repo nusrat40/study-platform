@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
         {
           path:'sessionDetails/:id',
           element:<PrivateRoute><SessionDetails></SessionDetails></PrivateRoute>,
-          loader:({params})=> fetch(`http://localhost:5000/sessions/${params.id}`)
+          loader:({params})=> fetch(`https://study-platform-server-gold.vercel.app/sessions/${params.id}`)
         },
         {
           path:'payment',
@@ -85,7 +85,7 @@ export const router = createBrowserRouter([
       {
         path:'updateMaterial/:id',
         element:<TutorRoute><UpdateMaterial></UpdateMaterial></TutorRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/materials/${params.id}`)
+        loader: ({params})=> fetch(`https://study-platform-server-gold.vercel.app/materials/${params.id}`)
         
       },
 
@@ -97,7 +97,7 @@ export const router = createBrowserRouter([
       {
         path:'bookedSessionDetail/:id',
         element:<StudentRoute><BookedSessionDetail></BookedSessionDetail></StudentRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/bookedSession/${params.id}`)
+        loader: ({params})=> fetch(`https://study-platform-server-gold.vercel.app/bookedSession/${params.id}`)
       },
       {
         path:'createNote',
@@ -110,12 +110,12 @@ export const router = createBrowserRouter([
       {
         path:'viewStudyMaterials/:id',
         element:<StudentRoute><StudyMaterials></StudyMaterials></StudentRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/materials/session/${params.id}`)
+        loader: ({params})=> fetch(`https://study-platform-server-gold.vercel.app/materials/session/${params.id}`)
       },
       {
         path:'updateNote/:id',
         element:<StudentRoute><UpdateNote></UpdateNote></StudentRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/notes/${params.id}`)
+        loader: ({params})=> fetch(`https://study-platform-server-gold.vercel.app/notes/${params.id}`)
         
       },
 
@@ -135,7 +135,7 @@ export const router = createBrowserRouter([
       {
         path:'updateItem/:id',
         element:<AdminRoute><UpdateStudySession></UpdateStudySession></AdminRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/sessions/${params.id}`)
+        loader: ({params})=> fetch(`https://study-platform-server-gold.vercel.app/sessions/${params.id}`)
         
       }
     ]
