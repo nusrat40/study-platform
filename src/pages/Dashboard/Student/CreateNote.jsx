@@ -68,7 +68,7 @@ const CreateNote = () => {
             </div>
 
             <div>
-              <label className="label font-medium">Session Description</label>
+              <label className="label font-medium">Note Description</label>
               <textarea
                 {...register("description", { required: true })}
                 className="textarea textarea-bordered w-full"

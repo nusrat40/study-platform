@@ -23,6 +23,7 @@ const TutorSection = () => {
               <img
                 src={tutor.photo}
                 alt="photo"
+                className="w-[290px] h-[370px] rounded-xl"
               />
             </figure>
             <div className="card-body items-center">

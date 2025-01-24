@@ -22,7 +22,7 @@ const AddStudySession = () => {
         if(allSession.data.insertedId){
             reset();
             Swal.fire({
-                position: "top-end",
+                position: "center",
                 icon: "success",
                 title: 'Session is added',
                 showConfirmButton: false,

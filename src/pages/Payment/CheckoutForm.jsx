@@ -66,7 +66,7 @@ const CheckoutForm = ({price,sessionId, sessionData, onPaymentSuccess }) => {
             setError(error.message);
         }
         else {
-            console.log('payment method', paymentMethod)
+            // console.log('payment method', paymentMethod)
             setError('');
         }
 
@@ -85,7 +85,7 @@ const CheckoutForm = ({price,sessionId, sessionData, onPaymentSuccess }) => {
             console.log('confirm error',confirmError)
         }
         else {
-            console.log('payment intent', paymentIntent)
+            // console.log('payment intent', paymentIntent)
             if (paymentIntent.status === 'succeeded') {
                 // console.log('transaction id', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
@@ -112,7 +112,7 @@ const CheckoutForm = ({price,sessionId, sessionData, onPaymentSuccess }) => {
 
 
                 const res = await axiosSecure.post('/bookedSession', bookingData);
-                console.log('payment saved', res.data);
+                // console.log('payment saved', res.data);
                 // refetch();
                 if (res.data?.success) {
                     Swal.fire({

@@ -64,7 +64,7 @@ const SignUp = () => {
                 if (res.data.insertedId) {
                   console.log('user added to the database')
                   Swal.fire({
-                      position: 'top-end',
+                      position: 'center',
                       icon: 'success',
                       title: 'User created successfully.',
                       showConfirmButton: false,

@@ -25,6 +25,7 @@ import UpdateMaterial from "../pages/Dashboard/Tutor/UpdateMaterial";
 import UpdateNote from "../pages/Dashboard/Student/UpdateNote";
 import SessionDetails from "../pages/Home/SessionDetails";
 import Payment from "../pages/Payment/Payment";
+import BookedSessionDetail from "../pages/Dashboard/Student/BookedSessionDetail";
 
 
 export const router = createBrowserRouter([
@@ -92,6 +93,11 @@ export const router = createBrowserRouter([
       {
         path:'viewBookedSessions',
         element:<StudentRoute><BookedSession></BookedSession></StudentRoute>
+      },
+      {
+        path:'bookedSessionDetail/:id',
+        element:<StudentRoute><BookedSessionDetail></BookedSessionDetail></StudentRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/bookedSession/${params.id}`)
       },
       {
         path:'createNote',
