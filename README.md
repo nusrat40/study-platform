@@ -31,7 +31,7 @@ To run **iLearning** locally, follow these steps:
 
 1️⃣ **Clone the repository:**  
 ```sh
-git clone https://github.com/your-username/iLearning.git
+git clone [https://github.com/your-username/iLearning.git](https://github.com/nusrat40/study-platform.git)
 cd iLearning
 ```  
 
@@ -43,8 +43,14 @@ npm install
 3️⃣ **Set up environment variables:**  
 Create a `.env` file in the root directory and add:  
 ```sh
-VITE_API_KEY=your_firebase_api_key
-VITE_STRIPE_KEY=your_stripe_key
+VITE_apiKey=AIzaSyBZJi78_od7HqvvtJHZ-RyOgIz83NXrNVw
+VITE_authDomain=study-platform-a9b9a.firebaseapp.com
+VITE_projectId=study-platform-a9b9a
+VITE_storageBucket=study-platform-a9b9a.firebasestorage.app
+VITE_messagingSenderId=1016668928009
+VITE_appId=1:1016668928009:web:256ad79687159bdc10a0d8
+VITE_IMAGE_HOSTING_KEY=1803053986aed0f87936551e65edd235
+VITE_Payment_Gateway_PK=pk_test_51QgThQENHr76v2yXgwPxb62Uwjtu891ta41R7rVtto9LRFCXCX5Ii3eSirWwSetbn1wrpnNS8PArW4YXWRi9XSLV00BgqnWEp1
 ```  
 
 4️⃣ **Run the development server:**  
