@@ -31,7 +31,7 @@ To run **iLearning** locally, follow these steps:
 
 1️⃣ **Clone the repository:**  
 ```sh
-git clone [https://github.com/your-username/iLearning.git](https://github.com/nusrat40/study-platform.git)
+git clone https://github.com/nusrat40/study-platform.git
 cd iLearning
 ```  
 
