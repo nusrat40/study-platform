@@ -58,6 +58,7 @@ const Navbar = () => {
             <li><Link className="font-bold" to="/courses">Courses</Link></li>
             <li><Link className="font-bold" to="/aboutUs">About Us</Link></li>
             
+            
             {/* Dashboard Link inside dropdown for mobile */}
             {user && isTutor && (
               <li><Link className="font-bold" to="/dashboard/addStudySession">Dashboard</Link></li>
@@ -68,6 +69,14 @@ const Navbar = () => {
             {user && isAdmin && (
               <li><Link className="font-bold" to="/dashboard/allUsers">Dashboard</Link></li>
             )}
+
+{
+            user && user.email && (
+              <li><Link className="font-bold" to="/profile">Profile</Link></li>
+            )
+          }
+
+
           </ul>
         </div>
         <img src={isScrolled ? logo1 : logo} alt="Logo" />
@@ -90,6 +99,14 @@ const Navbar = () => {
           {user && isAdmin && (
             <li><Link className="font-bold" to="/dashboard/allUsers">Dashboard</Link></li>
           )}
+
+          {
+            user && user.email && (
+              <li><Link className="font-bold" to="/profile">Profile</Link></li>
+            )
+          }
+
+
         </ul>
       </div>
 

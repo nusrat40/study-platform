@@ -28,6 +28,7 @@ import Payment from "../pages/Payment/Payment";
 import BookedSessionDetail from "../pages/Dashboard/Student/BookedSessionDetail";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Courses from "../pages/Courses/Courses";
+import Profile from "../pages/Profile/Profile";
 
 
 export const router = createBrowserRouter([
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
         {
             path:'signup',
             element:<SignUp></SignUp>
+        },
+        {
+            path:'profile',
+            element:<Profile></Profile>
         },
         {
           path:'sessionDetails/:id',

@@ -13,7 +13,7 @@ const AboutUs = () => {
       </div>
 
       {/* Our Mission Section */}
-      <div className="max-w-5xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="max-w-5xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-center">
         <img
           src={pic}
           alt="Volunteer Work"
