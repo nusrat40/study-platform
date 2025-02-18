@@ -3,6 +3,7 @@ import Banner from './Banner';
 import { Helmet } from 'react-helmet-async';
 import TutorSection from './TutorSection';
 import StudySection from './StudySection';
+import CategoriesSection from './CategoriesSection';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner></Banner>
             <StudySection></StudySection>
             <TutorSection></TutorSection>
+            <CategoriesSection></CategoriesSection>
         </div>
     );
 };

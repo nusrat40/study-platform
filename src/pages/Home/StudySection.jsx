@@ -18,9 +18,9 @@ const StudySection = () => {
 
 
     return (
-        <div className="space-y-10 my-20">
+        <div className="space-y-10 my-20 ">
         <h1 className="text-5xl font-bold text-center">Explore Our Study Sessions</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-12">
           {allSessions.map((session, index) => {
              const isOngoing =
              new Date() >= new Date(session.registrationStartDate) &&

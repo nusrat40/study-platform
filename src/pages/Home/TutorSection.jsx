@@ -14,9 +14,9 @@ const TutorSection = () => {
   });
 
   return (
-    <div className="space-y-10 my-20">
+    <div className="space-y-10 my-20 ">
       <h1 className="text-5xl font-bold text-center">Meet Our Mentors</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 px-12">
         {tutors.map((tutor, index) => (
           <div key={index} className="card bg-base-100  shadow-xl p-3">
             <figure>
