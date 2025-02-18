@@ -3,10 +3,10 @@ import pic from '../../assets/about.jpg'
 
 const AboutUs = () => {
   return (
-    <div className="bg-gray-50 min-h-screen py-10">
+    <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
-      <div className="text-center py-12">
-        <h1 className="text-5xl font-bold">Welcome to iLearning</h1>
+      <div className="text-center bg-[#f5edfe] p-20">
+        <h1 className="text-5xl font-bold text-[#6C3DBD]">Welcome to iLearning</h1>
         <p className="text-lg mt-2 max-w-2xl mx-auto">
           An innovative platform connecting tutors and students for an engaging and seamless learning experience.
         </p>

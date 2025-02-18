@@ -27,6 +27,7 @@ import SessionDetails from "../pages/Home/SessionDetails";
 import Payment from "../pages/Payment/Payment";
 import BookedSessionDetail from "../pages/Dashboard/Student/BookedSessionDetail";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import Courses from "../pages/Courses/Courses";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
            element:<AboutUs></AboutUs>
         },
         {
+           path:'courses',
+           element:<Courses></Courses>
+        },
+        {
             path:'login',
             element:<Login></Login>
         },
@@ -53,12 +58,12 @@ export const router = createBrowserRouter([
         },
         {
           path:'sessionDetails/:id',
-          element:<PrivateRoute><SessionDetails></SessionDetails></PrivateRoute>,
+          element:<SessionDetails></SessionDetails>,
           loader:({params})=> fetch(`https://study-platform-server-gold.vercel.app/sessions/${params.id}`)
         },
         {
           path:'payment',
-          element:<Payment></Payment>
+          element:<PrivateRoute><Payment></Payment></PrivateRoute>
         }
     ]
   },
