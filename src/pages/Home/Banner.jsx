@@ -1,5 +1,6 @@
 import React from "react";
 import heroBg from "../../assets/hero-bg.png";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -13,7 +14,8 @@ const Banner = () => {
             Learn Something new every day and get inspired by the diversity of
             online learning
           </p>
-          <button className="btn bg-[#ad6cf5] text-white font-bold ">Sign Up To Find Our Courses</button>
+          <button className="btn bg-[#ad6cf5] text-white font-bold ">
+          <Link to="/signup">Sign Up To Find Our Courses</Link></button>
         </div>
         <img src={heroBg} />
       </div>

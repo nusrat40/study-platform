@@ -26,6 +26,7 @@ import UpdateNote from "../pages/Dashboard/Student/UpdateNote";
 import SessionDetails from "../pages/Home/SessionDetails";
 import Payment from "../pages/Payment/Payment";
 import BookedSessionDetail from "../pages/Dashboard/Student/BookedSessionDetail";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 
 export const router = createBrowserRouter([
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
         {
             path:'/',
             element:<Home></Home>
+        },
+        {
+           path:'aboutUs',
+           element:<AboutUs></AboutUs>
         },
         {
             path:'login',
