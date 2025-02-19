@@ -79,12 +79,16 @@ const Navbar = () => {
             <li><Link className="font-bold" to="/">Home</Link></li>
             <li><Link className="font-bold" to="/courses">Courses</Link></li>
             <li><Link className="font-bold" to="/aboutUs">About Us</Link></li>
-            <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
+          
             
 
 {
             user && user.email && (
-              <li><Link className="font-bold" to="/profile">Profile</Link></li>
+              <>
+                <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
+               <li><Link className="font-bold" to="/profile">Profile</Link></li>
+              </>
+             
             )
           }
 
@@ -104,7 +108,10 @@ const Navbar = () => {
 
           {
             user && user.email && (
-              <li><Link className="font-bold" to="/profile">Profile</Link></li>
+              <>
+                <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
+               <li><Link className="font-bold" to="/profile">Profile</Link></li>
+              </>
             )
           }
 
