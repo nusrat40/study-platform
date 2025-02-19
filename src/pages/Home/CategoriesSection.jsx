@@ -13,7 +13,7 @@ const categories = [
 ];
 
 const CategoriesSection = () => (
-  <div className="space-y-10 my-20 container mx-auto px-12 bg-[#f7f5fa] py-10">
+  <div className="space-y-10 mb-0 my-20 container mx-auto px-12 bg-[#f7f5fa] py-10">
     <h1 className="text-5xl font-bold text-center">Explore Our Categories</h1>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {categories.map((category, index) => (
