@@ -7,6 +7,7 @@ import CategoriesSection from './CategoriesSection';
 import Testimonial from './Testimonial';
 import PopularCourse from './PopularCourse';
 import StatsSection from './StatsSection';
+import Subscribe from './subscribe';
 
 const Home = () => {
     return (
@@ -21,6 +22,7 @@ const Home = () => {
             <PopularCourse></PopularCourse>
             <StatsSection></StatsSection>
             <Testimonial></Testimonial>
+            <Subscribe></Subscribe>
 
            
 

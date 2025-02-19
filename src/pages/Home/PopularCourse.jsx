@@ -43,7 +43,7 @@ const PopularCourse = () => {
                   ${course.registrationFee}
                 </span>
                 <button
-                  onClick={() => navigate(`/courseDetails/${course._id}`)}
+                 onClick={()=>navigate('/courses')}
                   className="px-4 py-2 bg-[#a054f4] text-white font-bold rounded-lg hover:bg-[#8a3ee5] transition"
                 >
                   Learn More
