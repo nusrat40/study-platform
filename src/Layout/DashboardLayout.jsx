@@ -4,12 +4,14 @@ import { FaBookOpen, FaCalendar, FaChalkboardTeacher, FaFileAlt, FaHome, FaStick
 import { MdMenuBook } from "react-icons/md";
 import useTutor from "../hooks/useTutor";
 import useStudent from "../hooks/useStudent";
+import { IoMdPerson } from "react-icons/io";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
 
 const DashboardLayout = () => {
 
   const [isAdmin] = useAdmin();
   const [isTutor] = useTutor();
-  const [isStudent] =useStudent();
+  const [isStudent] = useStudent();
 
   return (
     <div className="flex">
@@ -17,7 +19,29 @@ const DashboardLayout = () => {
       <div className="w-64 min-h-screen bg-[#f5edfe]">
         <ul className="menu p-4">
 
-            {/* admin dashboard */}
+          {/* Shared nav links - Dashboard and Home */}
+          <li>
+            <NavLink to="/dashboard/overview">
+              <TbLayoutDashboardFilled />
+              Dashboard
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/userProfile">
+              <IoMdPerson />
+              Profile
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/">
+              <FaHome />
+              Home
+            </NavLink>
+          </li>
+
+          <div className="divider"></div>
+
+          {/* Admin Dashboard */}
           {isAdmin && (
             <>
               <li>
@@ -41,9 +65,8 @@ const DashboardLayout = () => {
             </>
           )}
 
-
-           {/* Tutor Dashboard */}
-           {isTutor && (
+          {/* Tutor Dashboard */}
+          {isTutor && (
             <>
               <li>
                 <NavLink to="/dashboard/addStudySession">
@@ -54,7 +77,7 @@ const DashboardLayout = () => {
               <li>
                 <NavLink to="/dashboard/viewStudySessions">
                   <FaCalendar />
-                   All Study Sessions
+                  All Study Sessions
                 </NavLink>
               </li>
               <li>
@@ -71,7 +94,6 @@ const DashboardLayout = () => {
               </li>
             </>
           )}
-
 
           {/* Student Dashboard */}
           {isStudent && (
@@ -94,27 +116,9 @@ const DashboardLayout = () => {
                   Manage Personal Notes
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink to="/dashboard/viewStudyMaterials">
-                  <FaFileAlt />
-                  View Study Materials
-                </NavLink>
-              </li> */}
             </>
           )}
 
-
-
-
-
-          {/* shared nav links */}
-          <div className="divider"></div>
-          <li>
-            <NavLink to="/">
-              <FaHome></FaHome>
-              Home
-            </NavLink>
-          </li>
         </ul>
       </div>
       {/* dashboard content */}

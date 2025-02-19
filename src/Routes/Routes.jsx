@@ -29,6 +29,8 @@ import BookedSessionDetail from "../pages/Dashboard/Student/BookedSessionDetail"
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Courses from "../pages/Courses/Courses";
 import Profile from "../pages/Profile/Profile";
+import DashboardOverview from "../pages/DashboardOverview/DashboardOverview";
+import DashboardProfile from "../pages/DashboardProfile/DashboardProfile";
 
 
 export const router = createBrowserRouter([
@@ -79,6 +81,15 @@ export const router = createBrowserRouter([
     </PrivateRoute>,
     errorElement:<ErrorPage></ErrorPage>,
     children:[
+      //shared routes
+      {
+          path:'overview',
+          element:<DashboardOverview></DashboardOverview>
+      },
+      {
+         path:'userProfile',
+         element:<DashboardProfile></DashboardProfile>
+      },
 
       //tutor routes
       {

@@ -57,18 +57,19 @@ const Navbar = () => {
             <li><Link className="font-bold" to="/">Home</Link></li>
             <li><Link className="font-bold" to="/courses">Courses</Link></li>
             <li><Link className="font-bold" to="/aboutUs">About Us</Link></li>
+            <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
             
             
             {/* Dashboard Link inside dropdown for mobile */}
-            {user && isTutor && (
-              <li><Link className="font-bold" to="/dashboard/addStudySession">Dashboard</Link></li>
+            {/* {user && isTutor && (
+              <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
             )}
             {user && isStudent && (
               <li><Link className="font-bold" to="/dashboard/viewBookedSessions">Dashboard</Link></li>
             )}
             {user && isAdmin && (
               <li><Link className="font-bold" to="/dashboard/allUsers">Dashboard</Link></li>
-            )}
+            )} */}
 
 {
             user && user.email && (
@@ -88,9 +89,10 @@ const Navbar = () => {
           <li><Link className="font-bold" to="/">Home</Link></li>
           <li><Link className="font-bold" to="/courses">Courses</Link></li>
           <li><Link className="font-bold" to="/aboutUs">About Us</Link></li>
+          <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
 
           {/* Dashboard Link in navbar center */}
-          {user && isTutor && (
+          {/* {user && isTutor && (
             <li><Link className="font-bold" to="/dashboard/addStudySession">Dashboard</Link></li>
           )}
           {user && isStudent && (
@@ -98,7 +100,7 @@ const Navbar = () => {
           )}
           {user && isAdmin && (
             <li><Link className="font-bold" to="/dashboard/allUsers">Dashboard</Link></li>
-          )}
+          )} */}
 
           {
             user && user.email && (
