@@ -3,17 +3,39 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import logo1 from "../assets/scroll-logo.svg";
 import { AuthContext } from "../provider/AuthProvider";
-import useTutor from "../hooks/useTutor";
-import useStudent from "../hooks/useStudent";
-import useAdmin from "../hooks/useAdmin";
+import sun from '../assets/contrast.png';
+import moon from '../assets/moon.png'
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const [isTutor] = useTutor();
-  const [isStudent] = useStudent();
-  const [isAdmin] = useAdmin();
+  // const [isTutor] = useTutor();
+  // const [isStudent] = useStudent();
+  // const [isAdmin] = useAdmin();
+
+
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  // update state on toggle
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
+  // set theme state in localstorage on mount & also update localstorage on state change
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    // add custom data-theme attribute to html tag required to update theme using DaisyUI
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,17 +81,6 @@ const Navbar = () => {
             <li><Link className="font-bold" to="/aboutUs">About Us</Link></li>
             <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
             
-            
-            {/* Dashboard Link inside dropdown for mobile */}
-            {/* {user && isTutor && (
-              <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
-            )}
-            {user && isStudent && (
-              <li><Link className="font-bold" to="/dashboard/viewBookedSessions">Dashboard</Link></li>
-            )}
-            {user && isAdmin && (
-              <li><Link className="font-bold" to="/dashboard/allUsers">Dashboard</Link></li>
-            )} */}
 
 {
             user && user.email && (
@@ -91,17 +102,6 @@ const Navbar = () => {
           <li><Link className="font-bold" to="/aboutUs">About Us</Link></li>
           <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
 
-          {/* Dashboard Link in navbar center */}
-          {/* {user && isTutor && (
-            <li><Link className="font-bold" to="/dashboard/addStudySession">Dashboard</Link></li>
-          )}
-          {user && isStudent && (
-            <li><Link className="font-bold" to="/dashboard/viewBookedSessions">Dashboard</Link></li>
-          )}
-          {user && isAdmin && (
-            <li><Link className="font-bold" to="/dashboard/allUsers">Dashboard</Link></li>
-          )} */}
-
           {
             user && user.email && (
               <li><Link className="font-bold" to="/profile">Profile</Link></li>
@@ -114,6 +114,25 @@ const Navbar = () => {
 
       {/* Navbar End */}
       <div className="navbar-end gap-4 hidden lg:flex">
+
+         {/* Toggle button here */}
+         <button className="btn btn-square btn-ghost">
+          <label className="swap swap-rotate w-12 h-12">
+            <input
+              type="checkbox"
+              onChange={handleToggle}
+              // show toggle image based on localstorage theme
+              checked={theme === "light" ? false : true}
+            />
+            {/* light theme sun image */}
+            <img src={sun} alt="light" className="w-8 h-8 swap-on" />
+            {/* dark theme moon image */}
+            <img src={moon} alt="dark" className="w-8 h-8 swap-off" />
+          </label>
+        </button>
+
+
+
         {user ? (
           <div className="flex items-center justify-center gap-2">
             <img className="w-14 h-14 rounded-full" src={user?.photoURL} alt="User Avatar" />
