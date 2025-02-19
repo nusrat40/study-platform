@@ -104,7 +104,6 @@ const Navbar = () => {
           <li><Link className="font-bold" to="/">Home</Link></li>
           <li><Link className="font-bold" to="/courses">Courses</Link></li>
           <li><Link className="font-bold" to="/aboutUs">About Us</Link></li>
-          <li><Link className="font-bold" to="/dashboard/overview">Dashboard</Link></li>
 
           {
             user && user.email && (
